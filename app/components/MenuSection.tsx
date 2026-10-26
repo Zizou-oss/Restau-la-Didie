@@ -88,7 +88,7 @@ export default function MenuSection() {
         <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
           {SPECIALTIES.map((specialty, index) => (
             <Reveal key={specialty.title} delay={index * 70}>
-              <figure className="group relative isolate h-40 overflow-hidden rounded-2xl bg-neutral-200 shadow-sm sm:h-48 sm:rounded-3xl">
+              <figure className="food-card group relative isolate h-40 overflow-hidden rounded-2xl bg-neutral-200 shadow-sm sm:h-48 sm:rounded-3xl">
                 <Image
                   src={specialty.image}
                   alt={specialty.alt}
@@ -97,8 +97,9 @@ export default function MenuSection() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <span className="food-card__shine" aria-hidden="true" />
                 <div className="absolute right-2 top-2 rounded-xl border border-white/30 bg-black/60 px-2.5 py-1.5 text-right text-white shadow-lg backdrop-blur sm:right-3 sm:top-3 sm:px-3">
-                  <p className="font-display text-base uppercase sm:text-lg">{formatFCFA(specialty.price)}</p>
+                  <p className="flex items-center justify-end gap-1 font-display text-base uppercase sm:text-lg"><span>{formatFCFA(specialty.price)}</span><span className="food-card__spark" aria-hidden="true">✦</span></p>
                   <p className="text-[8px] font-semibold uppercase tracking-[0.12em] text-white/75">Indicatif</p>
                 </div>
                 <figcaption className="absolute inset-x-0 bottom-0 p-3 text-white sm:p-4">

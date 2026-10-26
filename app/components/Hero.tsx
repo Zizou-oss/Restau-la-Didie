@@ -52,6 +52,12 @@ export default function Hero() {
               className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/5" />
+            <span className="food-orbit" aria-hidden="true">
+              <span className="food-orbit__leaf">✦</span>
+            </span>
+            <span className="food-stamp" aria-hidden="true">
+              <span>Fait</span><span>avec</span><strong>♥</strong>
+            </span>
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-white sm:p-8">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-white/75 sm:text-xs">La générosité du Faso</p>

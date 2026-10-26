@@ -57,9 +57,6 @@ export default function Contact() {
           >
             Écrire sur WhatsApp
           </a>
-          <p className="text-sm uppercase tracking-widest text-neutral-500">
-            📍 Pissy — Burkina Faso
-          </p>
         </div>
         </Reveal>
       </div>

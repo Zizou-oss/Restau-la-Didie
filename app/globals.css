@@ -128,6 +128,114 @@ html {
   animation: didie-scroll-cue 1.5s ease-in-out infinite;
 }
 
+/* Petites surprises gourmandes : végétal qui flotte, sceau maison et reflet sur les plats. */
+@keyframes didie-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes didie-leaf-drift {
+  0%, 100% { transform: translateY(0) rotate(-12deg) scale(1); }
+  50% { transform: translateY(-7px) rotate(14deg) scale(1.08); }
+}
+
+@keyframes didie-stamp-pop {
+  0%, 100% { transform: translateY(0) rotate(8deg); }
+  50% { transform: translateY(-5px) rotate(3deg); }
+}
+
+@keyframes didie-heart-beat {
+  0%, 100% { transform: scale(1); }
+  14%, 42% { transform: scale(1.18); }
+  28%, 56% { transform: scale(1); }
+}
+
+@keyframes didie-shine {
+  from { transform: translateX(-130%) skewX(-18deg); }
+  to { transform: translateX(230%) skewX(-18deg); }
+}
+
+.food-orbit {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  display: grid;
+  width: 3.25rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px dashed rgb(255 255 255 / 75%);
+  border-radius: 9999px;
+  color: white;
+  animation: didie-orbit 18s linear infinite;
+}
+
+.food-orbit__leaf {
+  display: grid;
+  width: 2.35rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 9999px;
+  background: var(--color-didie-green);
+  color: var(--color-didie-black);
+  font-size: 1.3rem;
+  animation: didie-leaf-drift 3.8s ease-in-out infinite;
+}
+
+.food-stamp {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  display: flex;
+  width: 4.4rem;
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 9999px;
+  background: rgb(247 168 33 / 92%);
+  color: var(--color-didie-black);
+  font-size: .58rem;
+  font-weight: 800;
+  line-height: 1.05;
+  text-transform: uppercase;
+  animation: didie-stamp-pop 3.2s ease-in-out infinite;
+}
+
+.food-stamp strong {
+  margin-top: .15rem;
+  color: var(--color-didie-red);
+  font-size: 1rem;
+  animation: didie-heart-beat 1.8s ease-in-out infinite;
+}
+
+.food-card__shine {
+  position: absolute;
+  inset: 0 auto 0 -35%;
+  width: 35%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 28%), transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.food-card:hover .food-card__shine {
+  opacity: 1;
+  animation: didie-shine .8s ease-out both;
+}
+
+.food-card__spark {
+  display: inline-block;
+  color: var(--color-didie-orange);
+  opacity: 0;
+  transform: scale(.3) rotate(-45deg);
+  transition: opacity .25s ease, transform .35s var(--ease-expo);
+}
+
+.food-card:hover .food-card__spark,
+.food-card:focus-within .food-card__spark {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
 /* Respect des préférences de réduction de mouvement */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -137,5 +245,13 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .food-orbit,
+  .food-orbit__leaf,
+  .food-stamp,
+  .food-stamp strong,
+  .food-card:hover .food-card__shine {
+    animation: none !important;
   }
 }
